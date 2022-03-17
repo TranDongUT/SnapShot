@@ -10,6 +10,7 @@ function App() {
       <div className="snapShot">
         <Search></Search>
         <Category />
+        <ListImage />
         <Routes>
           <Route path="/" element={<ListImage />} />
         </Routes>

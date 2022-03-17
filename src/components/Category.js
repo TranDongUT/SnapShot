@@ -27,7 +27,7 @@ function Category() {
       <Nav variant="tabs" defaultActiveKey="/home">
         <Nav.Item>
           <Nav.Link>
-            <div onClick={() => handleTab("Vehical")}>Vehical</div>
+            <div onClick={() => handleTab("Cars")}>Cars</div>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
