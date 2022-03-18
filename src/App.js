@@ -11,9 +11,9 @@ function App() {
         <Search></Search>
         <Category />
         <ListImage />
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<ListImage />} />
-        </Routes>
+        </Routes> */}
       </div>
     </div>
   );

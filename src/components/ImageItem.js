@@ -11,7 +11,7 @@ function Image({ children }) {
   const fetchData = async (keyWords = "") => {
     const respone = await axios
       .get(
-        `https://pixabay.com/api/?key=8761127-15c354fd40a23de8d36bfe25d&q=${keyWords}&image_type=photo&pretty=true`
+        `https://pixabay.com/api/?key=8761127-15c354fd40a23de8d36bfe25d&q=${keyWords}&page=1&per_page=5`
       )
       .then((respone) => {
         dispatch(action.fetchData(respone.data.hits));
