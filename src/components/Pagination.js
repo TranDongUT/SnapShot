@@ -1,34 +1,39 @@
 import style from "./style/paginationStyle.module.scss";
 import { Pagination } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { action, ImagesContext } from "../store";
 
 function PaginationComponent({ pagination, onPageChange }) {
+  const [state, dispatch] = useContext(ImagesContext);
+
   const { page, limit, totalRows } = pagination;
   const [range, setRange] = useState({
     start: 0,
-    end: 5,
+    end: 10,
   });
   const totalPages = Math.ceil(totalRows / limit);
-
   const arrButton = [];
   for (let i = 0; i < totalPages; i++) {
     arrButton.push(i + 1);
   }
 
   const handleChangePage = (newPage) => {
-    onPageChange(newPage);
-    if (newPage > range.end) {
-      setRange((prev) => {
-        return { start: prev.start + 5, end: prev.end + 5 };
-      });
+    if (state.resetPage) {
+      dispatch(action.resetPage());
+      onPageChange(1);
+    } else {
+      onPageChange(newPage);
+      if (newPage > range.end) {
+        setRange((prev) => {
+          return { start: prev.start + 5, end: prev.end + 5 };
+        });
+      }
+      if (newPage <= range.start) {
+        setRange((prev) => {
+          return { start: prev.start - 5, end: prev.end - 5 };
+        });
+      }
     }
-    if (newPage <= range.start) {
-      setRange((prev) => {
-        return { start: prev.start - 5, end: prev.end - 5 };
-      });
-    }
-    console.log("range", range);
-    console.log("newPage", newPage);
   };
 
   return (
@@ -43,7 +48,7 @@ function PaginationComponent({ pagination, onPageChange }) {
         return (
           <Pagination.Item
             key={button}
-            active={pagination.page == button}
+            active={page == button}
             onClick={() => handleChangePage(button)}
           >
             {button}
@@ -52,7 +57,7 @@ function PaginationComponent({ pagination, onPageChange }) {
       })}
 
       <Pagination.Item
-        disabled={pagination.page == totalPages}
+        disabled={page == totalPages}
         onClick={() => handleChangePage(pagination.page + 1)}
       >
         {">"}

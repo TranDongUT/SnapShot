@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { ImagesContext, action } from "../store";
 import style from "./style/itemStyle.module.scss";
@@ -8,19 +8,8 @@ function Image({ children }) {
 
   const [state, dispatch] = useContext(ImagesContext);
 
-  const fetchData = async (keyWords = "") => {
-    const respone = await axios
-      .get(
-        `https://pixabay.com/api/?key=8761127-15c354fd40a23de8d36bfe25d&q=${keyWords}&page=1&per_page=5`
-      )
-      .then((respone) => {
-        dispatch(action.fetchData(respone.data.hits));
-      });
-  };
-
   const searchByTag = (tag) => {
     dispatch(action.searchImg(tag));
-    fetchData(tag);
   };
 
   return (

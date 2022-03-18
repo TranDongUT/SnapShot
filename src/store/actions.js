@@ -1,4 +1,4 @@
-import { FETCH_DATA, SEARCH_IMG } from "./constants";
+import { FETCH_DATA, RESET_PAGE, SEARCH_IMG } from "./constants";
 
 export const fetchData = (payload) => ({
   type: FETCH_DATA,
@@ -8,4 +8,8 @@ export const fetchData = (payload) => ({
 export const searchImg = (payload) => ({
   type: SEARCH_IMG,
   payload,
+});
+
+export const resetPage = (payload) => ({
+  type: RESET_PAGE,
 });

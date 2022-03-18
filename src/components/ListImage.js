@@ -16,6 +16,7 @@ function ListImage() {
     limit: 5,
     totalRows: 1,
   });
+
   const handleChangePage = (newPage) => {
     setPagination({
       ...pagination,
@@ -27,7 +28,7 @@ function ListImage() {
     const respone = await axios
       .get(
         `https://pixabay.com/api/?key=8761127-15c354fd40a23de8d36bfe25d&q
-        =&image_type=photo&page=${pagination.page}&per_page=${pagination.limit}`
+        =&image_type=photo&&q=${state.searchImg}&page=${pagination.page}&per_page=${pagination.limit}`
       )
       .then((respone) => {
         setPagination({
@@ -40,8 +41,7 @@ function ListImage() {
 
   useEffect(() => {
     fetchImage();
-    return () => {};
-  }, [pagination.page]);
+  }, [pagination.page, state.searchImg]);
 
   return (
     <div>
