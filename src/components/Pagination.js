@@ -1,7 +1,7 @@
 import style from "./style/paginationStyle.module.scss";
 import { Pagination } from "react-bootstrap";
-import { useState, useContext } from "react";
-import { action, ImagesContext } from "../store";
+import { useEffect, useState, useContext } from "react";
+import { ImagesContext } from "../store";
 
 function PaginationComponent({ pagination, onPageChange }) {
   const [state, dispatch] = useContext(ImagesContext);
@@ -19,8 +19,18 @@ function PaginationComponent({ pagination, onPageChange }) {
 
   const handleChangePage = (newPage) => {
     onPageChange(newPage);
+
     handleChangeBtn(newPage);
   };
+
+  console.log(range);
+
+  useEffect(() => {
+    setRange({
+      start: 0,
+      end: 10,
+    });
+  }, [state.searchImg]);
 
   const handleChangeBtn = (newPage) => {
     if (newPage > range.end) {

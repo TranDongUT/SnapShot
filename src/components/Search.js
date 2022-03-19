@@ -8,7 +8,7 @@ function Search({ onPageChange }) {
 
   const handleInput = (e) => {
     dispatch(action.searchImg(e.target.value));
-    onPageChange(1);
+    onPageChange(1); //reset to page 1
   };
 
   return (

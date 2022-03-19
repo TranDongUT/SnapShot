@@ -11,7 +11,7 @@ function Image({ onPageChange, children }) {
 
   const searchByTag = (tag) => {
     dispatch(action.searchImg(tag));
-    onPageChange(1);
+    onPageChange(1); ///reset to page 1
   };
 
   return (
