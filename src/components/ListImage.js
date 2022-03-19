@@ -5,6 +5,8 @@ import ImageItem from "./ImageItem";
 import Loader from "./Loader";
 import style from "./style/ListStyle.module.scss";
 import PaginationComponent from "./Pagination";
+import Search from "./Search";
+import Category from "./Category";
 
 function ListImage() {
   const [state, dispatch] = useContext(ImagesContext);
@@ -45,6 +47,8 @@ function ListImage() {
 
   return (
     <div>
+      <Search onPageChange={handleChangePage} />
+      <Category onPageChange={handleChangePage} />
       <div className={style.listImg}>
         {images.length == 0 ? (
           <Loader />
@@ -52,7 +56,7 @@ function ListImage() {
           images.map((image) => {
             return (
               <div key={image.id} className={style.item}>
-                <ImageItem>{image}</ImageItem>
+                <ImageItem onPageChange={handleChangePage}>{image}</ImageItem>
               </div>
             );
           })

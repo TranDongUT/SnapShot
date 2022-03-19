@@ -9,7 +9,3 @@ export const searchImg = (payload) => ({
   type: SEARCH_IMG,
   payload,
 });
-
-export const resetPage = (payload) => ({
-  type: RESET_PAGE,
-});

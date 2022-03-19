@@ -4,22 +4,12 @@ import { useContext } from "react";
 import { action, ImagesContext } from "../store";
 import axios from "axios";
 
-function Category() {
+function Category({ onPageChange }) {
   const [state, dispatch] = useContext(ImagesContext);
-
-  const fetchData = async (keyWords) => {
-    const respone = await axios
-      .get(
-        `https://pixabay.com/api/?key=8761127-15c354fd40a23de8d36bfe25d&q=${keyWords}&page=1&per_page=5`
-      )
-      .then((respone) => {
-        dispatch(action.fetchData(respone.data.hits));
-      });
-  };
 
   const handleTab = (tab) => {
     dispatch(action.searchImg(tab));
-    fetchData(tab);
+    onPageChange(1);
   };
 
   return (

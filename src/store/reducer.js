@@ -1,9 +1,8 @@
-import { FETCH_DATA, RESET_PAGE, SEARCH_IMG } from "./constants";
+import { FETCH_DATA, SEARCH_IMG } from "./constants";
 
 const initState = {
   images: "",
   searchImg: "",
-  resetPage: false,
 };
 
 function reducer(state, action) {
@@ -18,11 +17,6 @@ function reducer(state, action) {
         ...state,
         searchImg: action.payload,
         resetPage: true,
-      };
-    case RESET_PAGE:
-      return {
-        ...state,
-        resetPage: false,
       };
     default:
       throw new Error("Invalid Action");

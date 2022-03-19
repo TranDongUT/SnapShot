@@ -18,21 +18,20 @@ function PaginationComponent({ pagination, onPageChange }) {
   }
 
   const handleChangePage = (newPage) => {
-    if (state.resetPage) {
-      dispatch(action.resetPage());
-      onPageChange(1);
-    } else {
-      onPageChange(newPage);
-      if (newPage > range.end) {
-        setRange((prev) => {
-          return { start: prev.start + 5, end: prev.end + 5 };
-        });
-      }
-      if (newPage <= range.start) {
-        setRange((prev) => {
-          return { start: prev.start - 5, end: prev.end - 5 };
-        });
-      }
+    onPageChange(newPage);
+    handleChangeBtn(newPage);
+  };
+
+  const handleChangeBtn = (newPage) => {
+    if (newPage > range.end) {
+      setRange((prev) => {
+        return { start: prev.start + 5, end: prev.end + 5 };
+      });
+    }
+    if (newPage <= range.start) {
+      setRange((prev) => {
+        return { start: prev.start - 5, end: prev.end - 5 };
+      });
     }
   };
 

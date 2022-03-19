@@ -3,13 +3,15 @@ import { useContext, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { ImagesContext, action } from "../store";
 import style from "./style/itemStyle.module.scss";
-function Image({ children }) {
+
+function Image({ onPageChange, children }) {
   const { webformatURL, user, views, downloads, likes, tags } = children;
 
   const [state, dispatch] = useContext(ImagesContext);
 
   const searchByTag = (tag) => {
     dispatch(action.searchImg(tag));
+    onPageChange(1);
   };
 
   return (
