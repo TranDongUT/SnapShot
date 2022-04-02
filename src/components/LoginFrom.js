@@ -18,7 +18,6 @@ function LoginForm() {
     }
   };
 
-  console.log(isLogin);
   return (
     <div className={style.from}>
       {isLogin ? (
