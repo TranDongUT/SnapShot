@@ -38,7 +38,8 @@ function ListImage() {
           totalRows: respone.data.totalHits,
         });
         dispatch(action.fetchData(respone.data.hits));
-      });
+      })
+      .catch((error) => alert("invalid input: ", error));
   };
 
   useEffect(() => {

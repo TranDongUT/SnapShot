@@ -1,0 +1,12 @@
+.from{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 100px;
+    .inputField{
+        margin-bottom: 5px;
+    }
+    .hideInput{
+        display: none;
+    }
+}

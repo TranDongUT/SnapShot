@@ -22,9 +22,6 @@ function PaginationComponent({ pagination, onPageChange }) {
 
     handleChangeBtn(newPage);
   };
-
-  console.log(range);
-
   useEffect(() => {
     setRange({
       start: 0,
